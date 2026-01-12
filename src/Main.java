@@ -3,30 +3,42 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        boolean lanjut = true;
 
-        System.out.println("Kalkulator BMI");
+        while (lanjut) {
+            try {
+                System.out.println("=== Kalkulator BMI ===");
+                System.out.print("Masukkan berat badan (Kg): ");
+                double berat = input.nextDouble();
 
-        System.out.print("Masukkan berat badan: ");
-        double berat = input.nextDouble();
+                System.out.print("Masukkan tinggi badan (cm): ");
+                double tinggi = input.nextDouble();
 
-        System.out.print("Masukkan tinggi badan: ");
-        double tinggi = input.nextDouble();
+                double tinggiBadanKuadrat = tinggi * tinggi;
+                double bmi = berat / tinggiBadanKuadrat;
 
-        double tinggiBadanKuadrat = tinggi * tinggi;
+                if (bmi < 18.5) {
+                    System.out.println("Berat badan anda kurang.");
+                } else if (bmi >= 18.5 && bmi <= 22.9) {
+                    System.out.println("Berat badan anda normal.");
+                } else if (bmi >= 23 && bmi <= 29.9) {
+                    System.out.println("Berat badan anda berlebih.");
+                } else {
+                    System.out.println("Anda obesitas.");
+                }
+            } catch (Exception e) {
+                System.out.println("Input tidak valid! harus input angka.");
+                input.nextLine();
+                continue;
+            }
 
-        double bmi = berat / tinggiBadanKuadrat;
-        System.out.printf("Skor bmi adalah %.2f\n", bmi);
+            System.out.println("Masih mau lanjut? (y/n)");
+            String pilihanLanjut = input.next();
+            if (pilihanLanjut.equalsIgnoreCase("n")) {
+                lanjut = false;
+            }
 
-        if (bmi < 18.5) {
-            System.out.println("Berat badan anda kurang.");
-        } else if (bmi >= 18.5 && bmi <= 22.9) {
-            System.out.println("Berat badan anda normal.");
-        } else if (bmi >= 23 && bmi <= 29.9) {
-            System.out.println("Berat badan anda berlebih.");
-        } else {
-            System.out.println("Anda obesitas.");
         }
-
         input.close();
     }
 }
