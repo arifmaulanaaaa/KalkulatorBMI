@@ -15,27 +15,10 @@ public class Main {
                 System.out.print("Masukkan tinggi badan (cm): ");
                 double tinggi = input.nextDouble();
 
-                double tinggiMeter = tinggi / 100;
-                double bmi = berat / (tinggiMeter * tinggiMeter);
+                double bmi = hitungBMi(berat, tinggi);
                 System.out.printf("Skor bmi anda: %.2f\n", bmi);
 
-                String saran;
-
-                if (bmi < 18.5) {
-                    System.out.println("Berat badan anda kurang.");
-                    saran = "Tambah asupan makanan bergizi cuy";
-                } else if (bmi >= 18.5 && bmi <= 22.9) {
-                    System.out.println("Berat badan anda normal.");
-                    saran = "Pertahankan cuy";
-                } else if (bmi >= 23 && bmi <= 29.9) {
-                    System.out.println("Berat badan anda berlebih.");
-                    saran = "Defisit kalori dan perbanyak gerak bro!";
-                } else {
-                    System.out.println("Anda obesitas.");
-                    saran = "Defisit kalori dan perbanyak gerak bro!";
-                }
-
-                System.out.println("Saran: " + saran + "\n");
+                tentukanKategoriDanSaran(bmi);
 
             } catch (Exception e) {
                 System.out.println("Input tidak valid! harus input angka.");
@@ -51,5 +34,26 @@ public class Main {
 
         }
         input.close();
+    }
+
+    public static double hitungBMi(double berat, double tinggi) {
+        double tinggiMeter = tinggi / 100;
+        return berat / (tinggiMeter * tinggiMeter);
+    }
+
+    public static void tentukanKategoriDanSaran(double bmi) {
+        if (bmi < 18.5) {
+            System.out.println("Berat badan anda kurang.");
+            System.out.println("Tambah asupan makanan bergizi cuy");
+        } else if (bmi >= 18.5 && bmi <= 22.9) {
+            System.out.println("Berat badan anda normal.");
+            System.out.println("Pertahankan cuy");
+        } else if (bmi >= 23 && bmi <= 29.9) {
+            System.out.println("Berat badan anda berlebih.");
+            System.out.println("Defisit kalori dan perbanyak gerak bro!");
+        } else {
+            System.out.println("Anda obesitas.");
+            System.out.println("Defisit kalori dan perbanyak gerak bro!");
+        }
     }
 }
