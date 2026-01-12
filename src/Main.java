@@ -33,6 +33,8 @@ public class Main {
 
             System.out.println("Masih mau lanjut? (y/n)");
             String pilihanLanjut = input.next();
+            input.nextLine();
+
             if (pilihanLanjut.equalsIgnoreCase("n")) {
                 lanjut = false;
             }
