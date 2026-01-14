@@ -19,7 +19,7 @@ public class Main {
                 double tinggi = input.nextDouble();
 
                 double bmi = hitungBMi(berat, tinggi);
-                // System.out.printf("Skor bmi anda: %.2f\n", bmi);
+                System.out.printf("Skor bmi anda: %.2f\n", bmi);
 
                 System.out.println("Halo " + nama + " anda masuk dalam kategori: ");
                 tentukanKategoriDanSaran(bmi);
